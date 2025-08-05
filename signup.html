@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Sign Up - The Recipe Room</title>
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: url('https://images.unsplash.com/photo-1543353071-873f17a7a088?auto=format&fit=crop&w=1740&q=80') no-repeat center center fixed;
+      background-size: cover;
+      color: white;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 50px;
+      background-color: rgba(255, 255, 255, 0.8);
+      box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+    }
+
+    .logo {
+      font-family: 'Pacifico', cursive;
+      font-size: 28px;
+      color: orange;
+    }
+
+    .nav-buttons button {
+      background-color: orange;
+      color: white;
+      border: none;
+      padding: 8px 16px;
+      font-weight: bold;
+      border-radius: 20px;
+      cursor: pointer;
+      margin-left: 10px;
+    }
+
+    .nav-buttons button:hover {
+      background-color: darkorange;
+    }
+
+    .form-box {
+      background-color: rgba(0, 0, 0, 0.85);
+      max-width: 400px;
+      margin: 100px auto;
+      padding: 40px;
+      border-radius: 20px;
+      text-align: center;
+    }
+
+    .form-box h2 {
+      font-family: 'Pacifico', cursive;
+      font-size: 36px;
+      margin-bottom: 30px;
+      color: orange;
+    }
+
+    .form-box input {
+      width: 100%;
+      padding: 12px;
+      margin: 10px 0;
+      border: none;
+      border-radius: 8px;
+    }
+
+    .form-box button {
+      background-color: orange;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      font-weight: bold;
+      border-radius: 20px;
+      cursor: pointer;
+      margin-top: 20px;
+    }
+
+    .form-box button:hover {
+      background-color: darkorange;
+    }
+
+    .form-box p {
+      margin-top: 20px;
+    }
+
+    .form-box a {
+      color: orange;
+      text-decoration: none;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="logo">The Recipe Room</div>
+    <div class="nav-buttons">
+      <button onclick="location.href='index.html'">Home</button>
+      <button onclick="location.href='login.html'">Login</button>
+      <button onclick="location.href='about.html'">About</button>
+    </div>
+  </header>
+
+  <div class="form-box">
+    <h2>Sign Up</h2>
+    <form id="signupForm">
+      <input type="text" id="username" placeholder="Full Name" required />
+      <input type="email" id="email" placeholder="Email" required />
+      <input type="password" id="password" placeholder="Password" required />
+      <input type="password" id="confirmPassword" placeholder="Confirm Password" required />
+      <button type="submit">Sign Up</button>
+    </form>
+    <p>Already have an account? <a href="login.html">Login</a></p>
+  </div>
+
+  <!-- ✅ Script at bottom so elements exist -->
+  <script>
+    const form = document.getElementById("signupForm");
+
+    form.addEventListener("submit", async function(e) {
+      e.preventDefault(); // ✅ Stop page reload
+
+      const username = document.getElementById("username").value;
+      const email = document.getElementById("email").value;
+      const password = document.getElementById("password").value;
+      const confirmPassword = document.getElementById("confirmPassword").value;
+
+      if (password !== confirmPassword) {
+        alert("Passwords do not match!");
+        return;
+      }
+
+      try {
+        const res = await fetch("/api/auth/signup", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ username, email, password })
+        });
+
+        const data = await res.json();
+        console.log("Signup Response:", data);
+
+        if (res.ok) {
+          if (data.token) localStorage.setItem("token", data.token);
+          window.location.href = "/dashboard.html";
+        } else {
+          alert(data.message || "Signup failed!");
+        }
+      } catch (err) {
+        console.error("Signup Error:", err);
+        alert("An error occurred during signup.");
+      }
+    });
+  </script>
+
+</body>
+</html>

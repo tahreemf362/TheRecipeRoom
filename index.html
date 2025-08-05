@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>The Recipe Room</title>
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: url('https://images.unsplash.com/photo-1543353071-873f17a7a088?auto=format&fit=crop&w=1740&q=80') no-repeat center center fixed;
+      background-size: cover;
+      color: #333;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 50px;
+      background-color: rgba(255, 255, 255, 0.8);
+      box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .logo {
+      font-family: 'Pacifico', cursive;
+      font-size: 28px;
+      color: orange;
+    }
+
+    .nav-buttons button {
+      background-color: orange;
+      color: white;
+      border: none;
+      padding: 8px 16px;
+      font-weight: bold;
+      border-radius: 20px;
+      cursor: pointer;
+      margin-left: 10px;
+    }
+
+    .nav-buttons button:hover {
+      background-color: darkorange;
+    }
+
+    .hero-box {
+      background-color: rgba(0, 0, 0, 0.8);
+      color: white;
+      padding: 60px 40px;
+      text-align: center;
+      margin: 70px auto 40px;
+      max-width: 700px;
+      border-radius: 20px;
+    }
+
+    .hero-box h1 {
+      font-family: 'Pacifico', cursive;
+      font-size: 48px;
+      color: orange;
+      margin-bottom: 20px;
+    }
+
+    .hero-box p {
+      font-size: 18px;
+      line-height: 1.6;
+    }
+
+    h2 {
+      text-align: center;
+      margin-top: 60px;
+      font-size: 32px;
+      color: darkred;
+      text-shadow: 1px 1px 2px #fff;
+    }
+
+    .recipe-card {
+      background-color: white;
+      border-radius: 12px;
+      padding: 20px;
+      margin: 30px auto;
+      width: 90%;
+      max-width: 800px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+
+    .recipe-card img {
+      width: 100%;
+      border-radius: 12px;
+      margin-bottom: 15px;
+    }
+
+    .recipe-card h3 {
+      color: #cc5500;
+      font-size: 24px;
+      margin-bottom: 10px;
+    }
+
+    .recipe-card p {
+      margin: 8px 0;
+    }
+
+    footer {
+      background-color: rgba(0,0,0,0.85);
+      color: white;
+      text-align: center;
+      padding: 25px;
+      margin-top: 60px;
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="logo">The Recipe Room</div>
+    <div class="nav-buttons">
+      <button onclick="location.href='signup.html'">Join Now</button>
+      <button onclick="location.href='login.html'">Login</button>
+      <button onclick="location.href='signup.html'">Sign In</button>
+      <button onclick="location.href='about.html'">About</button>
+    </div>
+  </header>
+
+  <div class="hero-box">
+    <h1>The Recipe Room</h1>
+    <p>Welcome to the world of delicious and easy-to-make recipes. Whether you're a beginner or a kitchen pro, we've got something flavorful for everyone!</p>
+  </div>
+
+  <h2>Most Popular Recipes</h2>
+
+  <div class="recipe-card">
+    <h3>Cheesy Garlic Toast</h3>
+    <img src="garlic.PNG" alt="Cheesy Garlic Toast">
+    <p><strong>Ingredients:</strong> Bread slices, butter, garlic paste, mozzarella cheese, oregano</p>
+    <p><strong> Recipe </strong>
+        <ul>
+    <li>Let 1/2 cup butter soften at room temperature.</li>
+    <li>Add 3–4 grated garlic cloves.</li>
+    <li>Mix in a little salt, oregano, and parsley.</li>
+    <li>Take white or brown bread slices and spread the garlic butter on each slice.</li>
+    <li>Heat a pan or skillet and toast each slice on both sides until golden brown.</li>
+    <li>If using an oven, preheat to 180°C and bake for 8–10 minutes.</li>
+    <li>Optional: Add grated mozzarella cheese on top and bake for 2 more minutes.</li>
+    <li>Serve warm with creamy pasta or soup!</li>
+  </ul>
+
+
+  </div>
+
+  <div class="recipe-card">
+    <h3>Creamy Chicken Pasta</h3>
+    <img src="pasta.PNG" alt="Creamy Chicken Pasta">
+    <p><strong>Ingredients:</strong> Pasta, chicken, cream, garlic, black pepper, parmesan</p>
+    <strong> Recipe </strong>
+    <ul>
+    <li>Heat 1 tablespoon oil in a pan.</li>
+    <li>Add chicken breast (small cubes) and fry until golden brown.</li>
+    <li>Add a little salt, black pepper, and paprika powder; cook for another 2 minutes.</li>
+    <li>In a separate pan, melt 2 tablespoons butter and add 1 tablespoon flour; lightly fry.</li>
+    <li>Gradually add 1 cup milk while whisking to avoid lumps.</li>
+    <li>Once sauce thickens, add 1/2 cup cream and 1/2 cup grated cheese.</li>
+    <li>Mix in some oregano, garlic powder, and black pepper.</li>
+    <li>Add boiled pasta (penne or fusilli) and mix well.</li>
+    <li>Add the cooked chicken on top and gently toss.</li>
+    <li>Garnish with fresh parsley or coriander and serve hot!</li>
+  </ul>
+
+  </div>
+
+  <footer>
+    © 2025 The Recipe Room | All Rights Reserved | Follow us on Instagram @TheRecipeRoom
+  </footer>
+
+</body>
+</html>

@@ -1,0 +1,198 @@
+<!DOCTYPE html><html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dashboard - The Recipe Room</title>
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins&family=Playfair+Display&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: url('https://images.unsplash.com/photo-1543353071-873f17a7a088?auto=format&fit=crop&w=1740&q=80') no-repeat center center fixed;
+      background-size: cover;
+      color: #333;
+    }header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 50px;
+  background-color: rgba(255, 255, 255, 0.85);
+  box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+}
+
+.logo {
+  font-family: 'Pacifico', cursive;
+  font-size: 28px;
+  color: orange;
+}
+
+.nav-buttons button {
+  background-color: orange;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  font-weight: bold;
+  border-radius: 20px;
+  cursor: pointer;
+  margin-left: 10px;
+}
+
+.nav-buttons button:hover {
+  background-color: darkorange;
+}
+
+.white-box {
+  background-color: white;
+  padding: 30px;
+  margin: 40px auto;
+  border-radius: 20px;
+  max-width: 900px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+.white-box h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 32px;
+  color: darkred;
+  margin-bottom: 20px;
+}
+
+input, textarea, select, button {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-family: 'Poppins', sans-serif;
+}
+
+.recipe-list {
+  margin-top: 20px;
+  background-color: #f9f9f9;
+  padding: 15px;
+  border-radius: 12px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+th, td {
+  padding: 12px;
+  border: 1px solid #ddd;
+  text-align: center;
+}
+
+th {
+  background-color: orange;
+  color: white;
+}
+
+.footer {
+  background-color: rgba(0,0,0,0.85);
+  color: white;
+  text-align: center;
+  padding: 25px;
+  margin-top: 60px;
+  font-size: 14px;
+}
+
+.message-box {
+  background-color: #d4edda;
+  color: #155724;
+  padding: 15px;
+  margin-top: 20px;
+  border-radius: 10px;
+  display: none;
+}
+
+  </style>
+</head>
+<body>  <header>
+    <div class="logo">The Recipe Room</div>
+    <div class="nav-buttons">
+      <button onclick="location.href='about.html'">About</button>
+      <button onclick="location.href='login.html'">Logout</button>
+    </div>
+  </header>  <div class="white-box">
+    <h2>Welcome, User! 👋</h2>
+    <h3>Add New Recipe</h3>
+    <form id="addRecipeForm">
+      <input type="text" placeholder="Recipe Title" required />
+      <textarea placeholder="Recipe Instructions" rows="4" required></textarea>
+      <button type="submit">Add Recipe</button>
+    </form><div class="recipe-list">
+  <h3>My Recipes</h3>
+  <ul id="recipeList"></ul>
+</div>
+
+  </div>  <div class="white-box">
+    <h2>Community Recipes</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Username</th>
+          <th>Recipe</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Ayesha</td>
+          <td>Chocolate Cake</td>
+          <td><button onclick="sendRecipe(this)">Send Request to Get Recipe</button></td>
+        </tr>
+        <tr>
+          <td>Ali</td>
+          <td>Spicy Biryani</td>
+          <td><button onclick="sendRecipe(this)">Send Request to Get Recipe</button></td>
+        </tr>
+        <tr>
+          <td>Sana</td>
+          <td>Garlic Bread</td>
+          <td><button onclick="sendRecipe(this)">Send Request to Get Recipe</button></td>
+        </tr>
+        <tr>
+          <td>Usman</td>
+          <td>White Sauce Pasta</td>
+          <td><button onclick="sendRecipe(this)">Send Request to Get Recipe</button></td>
+        </tr>
+        <tr>
+          <td>Mariam</td>
+          <td>Chicken Qorma</td>
+          <td><button onclick="sendRecipe(this)">Send Request to Get Recipe</button></td>
+        </tr>
+        <tr>
+          <td>Fahad</td>
+          <td>Fudge Brownies</td>
+          <td><button onclick="sendRecipe(this)">Send Request to Get Recipe</button></td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="message-box" id="messageBox">Recipe has been sent via email! 📧</div>
+  </div>  <footer class="footer">
+    © 2025 The Recipe Room | Crafted with Love | Follow us @TheRecipeRoom
+  </footer>  <script>
+    // Handle recipe add
+    document.getElementById('addRecipeForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const title = this.querySelector('input').value;
+      const instructions = this.querySelector('textarea').value;
+      const li = document.createElement('li');
+      li.textContent = `${title} - ${instructions.substring(0, 50)}...`;
+      document.getElementById('recipeList').appendChild(li);
+      this.reset();
+    });
+
+    // Handle send recipe request
+    function sendRecipe(btn) {
+      const messageBox = document.getElementById('messageBox');
+      messageBox.style.display = 'block';
+      setTimeout(() => {
+        messageBox.style.display = 'none';
+      }, 3000);
+    }
+  </script></body>
+</html>
